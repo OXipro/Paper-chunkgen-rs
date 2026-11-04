@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/level/chunk/ChunkGenerators.java
++++ b/net/minecraft/world/level/chunk/ChunkGenerators.java
+@@ -10,6 +10,10 @@
+     public static MapCodec<? extends ChunkGenerator> bootstrap(final Registry<MapCodec<? extends ChunkGenerator>> registry) {
+         Registry.register(registry, "noise", NoiseBasedChunkGenerator.CODEC);
+         Registry.register(registry, "flat", FlatLevelSource.CODEC);
++        // chunkgen start - register the Rust-backed generator
++        Registry.register(registry, net.minecraft.resources.Identifier.fromNamespaceAndPath("chunkgen", "rust"),
++                dev.chunkgen.paper.RustChunkGenerator.CODEC);
++        // chunkgen end
+         return Registry.register(registry, "debug", DebugLevelSource.CODEC);
+     }
+ }

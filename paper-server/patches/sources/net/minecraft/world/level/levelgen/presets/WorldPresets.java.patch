@@ -1,0 +1,13 @@
+--- a/net/minecraft/world/level/levelgen/presets/WorldPresets.java
++++ b/net/minecraft/world/level/levelgen/presets/WorldPresets.java
+@@ -41,6 +41,10 @@
+     public static final ResourceKey<WorldPreset> AMPLIFIED = register("amplified");
+     public static final ResourceKey<WorldPreset> SINGLE_BIOME_SURFACE = register("single_biome_surface");
+     public static final ResourceKey<WorldPreset> DEBUG = register("debug_all_block_states");
++    // chunkgen start - the preset itself is data (data/paper/worldgen/world_preset/chunkgen_rust.json);
++    // this key only names it so datagen and other callers can refer to it in code.
++    public static final ResourceKey<WorldPreset> CHUNKGEN_RUST =
++        ResourceKey.create(Registries.WORLD_PRESET, Identifier.fromNamespaceAndPath("paper", "chunkgen_rust"));
+ 
+     public static void bootstrap(final BootstrapContext<WorldPreset> context) {
+         new WorldPresets.Bootstrap(context).bootstrap();
